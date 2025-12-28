@@ -42,8 +42,7 @@ const Navbar = () => {
           {/* Right Side - CTA */}
           <div className="hidden md:flex items-center">
              <button className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(220,38,38,0.4)]">
-               ابدأ الآن
-             </button>
+Join now             </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -142,11 +141,11 @@ const MobileMenu = ({ setIsMobileOpen }) => {
 };
 
 const NAV_ITEMS = [
-  { path: "/", label: "الرئيسية", icon: FiHome },
-  { path: "/about", label: "من نحن", icon: FiInfo },
-  { path: "/services", label: "خدماتنا", icon: FiSettings },
-  { path: "/price", label: "الأسعار", icon: FiBriefcase },
-  { path: "/contactus", label: "اتصل بنا", icon: FiMail },
+  { path: "/", label: "Home", icon: FiHome },
+  { path: "/about", label: "About", icon: FiInfo },
+  { path: "/services", label: "Services", icon: FiSettings },
+  { path: "/price", label: "Price", icon: FiBriefcase },
+  { path: "/contactus", label: "Contact us", icon: FiMail },
 ];
 
 export default Navbar;

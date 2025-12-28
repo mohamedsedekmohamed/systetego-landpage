@@ -98,11 +98,7 @@ const Banners = () => {
               </motion.a>
             </div>
 
-            {/* مميزات سريعة تحت الأزرار */}
-            <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-6 text-gray-500 font-medium">
-              <span className="flex items-center gap-2"><FiCheckCircle className="text-green-500" /> No Card Required</span>
-              <span className="flex items-center gap-2"><FiCheckCircle className="text-green-500" /> 14-Day Trial</span>
-            </div>
+           
           </motion.div>
 
           {/* --- الجانب الأيمن: الصورة المعززة --- */}
@@ -112,20 +108,7 @@ const Banners = () => {
             className="relative"
           >
             {/* عناصر طائرة حول الصورة (Floating Cards) */}
-            <motion.div 
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -top-6 -left-6 z-20 bg-white p-4 rounded-2xl shadow-2xl border border-gray-100 hidden md:block"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-green-100 rounded-lg text-green-600"><FiLayers /></div>
-                <div>
-                  <p className="text-xs text-gray-400 font-bold uppercase">Stock Level</p>
-                  <p className="font-black text-gray-800">+85% Optimized</p>
-                </div>
-              </div>
-            </motion.div>
-
+          
             <motion.div 
               animate={{ y: [0, 15, 0] }}
               transition={{ duration: 4, repeat: Infinity, delay: 1 }}
