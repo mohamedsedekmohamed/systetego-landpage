@@ -1,89 +1,138 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { FaFacebookF, FaInstagram, FaTwitter, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { HiArrowUpRight } from "react-icons/hi2";
 import logo from '../assets/LOGOSYS.jpeg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  // مصفوفة الروابط بتنظيم عصري
+  const sections = [
+    {
+      title: "Product",
+      links: ["Smart POS", "Inventory Management", "Analytics Hub", "Cloud Sync"]
+    },
+    {
+      title: "Company",
+      links: ["Our Story", "Tech Stack", "Career", "Press Kit"]
+    },
+    {
+      title: "Legal",
+      links: ["Privacy Policy", "Service Terms", "Cookie Settings"]
+    }
+  ];
+
   return (
-    <footer className="bg-white border-t border-gray-100 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6 lg:px-8">
+    <footer className="relative bg-[#050505] text-white pt-32 pb-12 overflow-hidden">
+      {/* عناصر خلفية هندسية (Abstract Shapes) */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[150px] -z-0" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[120px] -z-0" />
+
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-16">
         
-        {/* Logo Section & Newsletter - الأكشن هنا في ظهور اللوجو */}
-        <div className="flex flex-col items-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative group cursor-pointer"
-          >
-            <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-900 rounded-2xl blur opacity-20 group-hover:opacity-50 transition duration-1000"></div>
-            <img 
-              src={logo} 
-              alt="SysteGo Logo" 
-              className="relative h-24 w-auto rounded-xl object-contain shadow-2xl border border-white/10" 
-            />
-          </motion.div>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="mx-auto mt-8 max-w-md text-center leading-relaxed text-gray-500 font-medium"
-          >
-            Empowering businesses with smart POS and inventory solutions. 
-            Manage everything from one unified dashboard.
-          </motion.p>
-        </div>
-
-        {/* Links Section - توزيع أفضل وأكشن عند الـ Hover */}
-        <div className="mt-12">
-          <ul className="flex flex-wrap justify-center gap-y-4 gap-x-8 md:gap-x-12">
-            {["Home", "Services", "Price", "About Us", "Contact"].map((item, idx) => (
-              <li key={idx}>
-                <a
-                  className="relative text-gray-800 font-bold uppercase tracking-widest text-sm transition hover:text-red-700 group"
-                  href={`#${item.toLowerCase()}`}
-                >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-700 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Social Icons - أيقونات تفاعلية جداً */}
-        <div className="mt-12 flex justify-center gap-6">
-          {[
-            { Icon: FaFacebookF, link: "#", color: "hover:bg-blue-600" },
-            { Icon: FaInstagram, link: "#", color: "hover:bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600" },
-            { Icon: FaTwitter, link: "#", color: "hover:bg-sky-400" },
-            { Icon: FaLinkedinIn, link: "#", color: "hover:bg-blue-700" },
-          ].map((social, index) => (
-            <motion.a
-              key={index}
-              href={social.link}
-              whileHover={{ y: -5, scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gray-50 text-gray-600 shadow-sm transition-all duration-300 hover:text-white ${social.color}`}
+        {/* الجزء العلوي: Branding & Big Statement */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-32">
+          
+          <div className="lg:col-span-7 space-y-10">
+            {/* Logo Container - تصميم فضائي حديث */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative inline-block"
             >
-              <social.Icon size={20} />
-            </motion.a>
-          ))}
-        </div>
+              <div className="absolute inset-0 bg-white/20 blur-2xl rounded-full" />
+              <div className="relative bg-gradient-to-b from-white to-gray-300 p-1 rounded-[2.5rem]">
+                <img 
+                  src={logo} 
+                  alt="SysteGo" 
+                  className="h-24 md:h-36 w-auto rounded-[2.3rem] object-contain shadow-2xl" 
+                />
+              </div>
+            </motion.div>
 
-        {/* Bottom Line - Copyright */}
-        <div className="mt-16 border-t border-gray-100 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-400">
-            © {currentYear} SysteGo Solutions. All rights reserved.
-          </p>
-          <div className="flex gap-4 text-sm text-gray-400">
-            <a href="#" className="hover:text-red-700 transition">Privacy Policy</a>
-            <span className="hidden md:inline">•</span>
-            <a href="#" className="hover:text-red-700 transition">Terms of Service</a>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase">
+              The Future of <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
+                Retail Tech.
+              </span>
+            </h2>
+          </div>
+
+          <div className="lg:col-span-5 flex flex-col justify-end lg:items-end">
+            <p className="text-gray-400 text-xl md:text-2xl font-light leading-relaxed max-w-md lg:text-right">
+              Empowering the next generation of retailers with zero-latency systems and beautiful interfaces.
+            </p>
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-10 flex items-center gap-3 bg-white text-black px-8 py-5 rounded-2xl font-black uppercase text-sm tracking-widest hover:bg-red-600 hover:text-white transition-all duration-500"
+            >
+              Get Started Now <HiArrowUpRight size={20} />
+            </motion.button>
           </div>
         </div>
+
+        {/* الجزء الأوسط: Bento Grid Links */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 py-20 border-t border-white/10">
+          {sections.map((section) => (
+            <div key={section.title} className="space-y-8">
+              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-red-500">
+                {section.title}
+              </h4>
+              <ul className="space-y-4">
+                {section.links.map((link) => (
+                  <li key={link}>
+                    <a href="#" className="text-gray-400 text-lg hover:text-white transition-all duration-300 flex items-center group">
+                      <span className="w-0 group-hover:w-4 h-[1px] bg-red-500 mr-0 group-hover:mr-3 transition-all duration-300"></span>
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {/* Social Presence - تصميم عمودي مميز */}
+          <div className="col-span-2 lg:col-span-2 flex flex-col lg:items-end gap-10">
+            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-gray-500 lg:text-right">
+              Join the Ecosystem
+            </h4>
+            <div className="flex flex-wrap gap-4 justify-start lg:justify-end">
+              {[FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn].map((Icon, idx) => (
+                <motion.a 
+                  key={idx} 
+                  whileHover={{ y: -10, backgroundColor: "#dc2626" }}
+                  className="w-16 h-16 flex items-center justify-center rounded-3xl bg-white/5 border border-white/10 text-white backdrop-blur-md transition-colors duration-500"
+                >
+                  <Icon size={24} />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* الجزء السفلي: الـ Footer النهائي */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-gray-500 text-sm font-medium">
+            © {currentYear} SYSTEGO SOLUTIONS — ALL RIGHTS RESERVED
+          </div>
+          
+          <div className="flex items-center gap-2 group cursor-pointer">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-xs font-bold tracking-widest text-gray-400 group-hover:text-white transition-colors">
+              SYSTEMS OPERATIONAL
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* لمسة فنية: نص عملاق في الخلفية يتحرك عند التمرير */}
+      <div className="absolute -bottom-10 left-0 w-full overflow-hidden opacity-[0.02] select-none pointer-events-none">
+        <h1 className="text-[20vw] font-black leading-none whitespace-nowrap">
+          SYSTEGO SOLUTIONS
+        </h1>
       </div>
     </footer>
   );

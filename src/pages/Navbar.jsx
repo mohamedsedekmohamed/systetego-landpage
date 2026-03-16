@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FiMenu, FiX, FiHome, FiInfo, FiBriefcase, FiMail, FiSettings, FiExternalLink } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from '../assets/LOGOSYS.jpeg';
+import { SiGoogledataflow } from "react-icons/si";
 
 const Navbar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -146,6 +147,7 @@ const NAV_ITEMS = [
   { path: "/services", label: "Services", icon: FiSettings },
   { path: "/price", label: "Price", icon: FiBriefcase },
   { path: "/contactus", label: "Contact us", icon: FiMail },
+  { path: "/flow", label: "Flow", icon: SiGoogledataflow },
 ];
 
 export default Navbar;

@@ -11,6 +11,7 @@ import ContactUs from './Mainpages/ContactUs';
 import Services from './Mainpages/Services';
 import  Test from './Mainpages/Test'
 import ScrollToTop from './ScrollToTop'
+import Flow from './Mainpages/Flow';
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/services" element={<Services />} />
         <Route path="/Test" element={<Test />} />
+        <Route path="/flow" element={<Flow />} />
       </Routes>
       <Footer />
     </BrowserRouter>

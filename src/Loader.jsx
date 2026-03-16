@@ -37,7 +37,7 @@ const LoadingScreen = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                SYSTEGO <span className="red">AI</span>
+                SYSTE<span className="red">GO</span>
               </motion.h2>
               <motion.p
                 animate={{ opacity: [0.4, 1, 0.4] }}
